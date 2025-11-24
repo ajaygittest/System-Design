@@ -1,41 +1,49 @@
 package ChessBoard;
 
 public class Box {
-	
-	private Pieces pieces;
-	
-	private int x;
-	
-	private int y;
-	
-	public Box(int x, int y, Pieces pieces) {
-		this.setPieces(pieces);
-		this.setX(x);
-		this.setY(y);
-	}
 
-	public Pieces getPieces() {
-		return pieces;
-	}
+    private Pieces pieces;
+    private int x;
+    private int y;
 
-	public void setPieces(Pieces pieces) {
-		this.pieces = pieces;
-	}
+    public Box(int x, int y, Pieces pieces) {
+        this.x = x;
+        this.y = y;
+        this.pieces = pieces;
+    }
 
-	public int getX() {
-		return x;
-	}
+    public Pieces getPieces() {
+        return pieces;
+    }
 
-	public void setX(int x) {
-		this.x = x;
-	}
+    public void setPieces(Pieces pieces) {
+        this.pieces = pieces;
+        if (pieces != null) {
+            pieces.setX(this.x);
+            pieces.setY(this.y);
+        }
+    }
 
-	public int getY() {
-		return y;
-	}
+    public int getX() {
+        return x;
+    }
 
-	public void setY(int y) {
-		this.y = y;
-	}
+    public int getY() {
+        return y;
+    }
 
+    public boolean isEmpty() {
+        return pieces == null;
+    }
+
+    public void removePiece() {
+        this.pieces = null;
+    }
+
+    @Override
+    public String toString() {
+        if (pieces == null) return ".";
+        String symbol = pieces.getName();
+        return pieces.isWhite() ? symbol.toUpperCase() : symbol.toLowerCase();
+    }
 }

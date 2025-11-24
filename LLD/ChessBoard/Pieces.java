@@ -1,31 +1,43 @@
 package ChessBoard;
 
+
 public abstract class Pieces {
-	
-	private boolean killed=false;
-	private boolean white=false;
-	
-	public Pieces(boolean white) {
-		this.setWhite(white);
-	}
+    private boolean white;
+    private int x;
+    private int y;
+    private String name;
 
-	public boolean isKilled() {
-		return killed;
-	}
+    public Pieces(boolean white, int x, int y, String name) {
+        this.white = white;
+        this.x = x;
+        this.y = y;
+        this.name = name;
+    }
 
-	public void setKilled(boolean killed) {
-		this.killed = killed;
-	}
+    public boolean isWhite() {
+        return white;
+    }
 
-	public boolean isWhite() {
-		return white;
-	}
+    public int getX() {
+        return x;
+    }
 
-	public void setWhite(boolean white) {
-		this.white = white;
-	}
-	
-	
-	public abstract boolean canMove(Board board, Box start, Box end);
+    public void setX(int x) {
+        this.x = x;
+    }
 
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+  
+    public abstract boolean canMove(Board board, Box start, Box end);
 }
